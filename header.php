@@ -23,7 +23,34 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
+<nav class="navbar navbar-inverse navbar-fixed-top2">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="color: #00ff00;">
+                <span><?php qsmt_the_custom_logo(); ?></span>
+                <span class="site-title"><?php bloginfo( 'name' ); ?></span>
+            </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <?php if ( has_nav_menu( 'primary' ) ) : ?>
+                <?php
+                    wp_nav_menu( array(
+                        'theme_location' => 'primary',
+                        'menu_class'     => 'nav navbar-nav navbar-right',
+                    ) );
+                    ?>
+            <?php endif; ?>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<div>
     <div class="site-inner">
         <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>
 

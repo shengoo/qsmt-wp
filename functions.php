@@ -16,10 +16,14 @@ if ( ! function_exists( 'qsmt_setup' ) ) :
          *
          */
         add_theme_support( 'custom-logo', array(
-            'height'      => 240,
-            'width'       => 240,
+            'height'      => 50,
+            'width'       => 50,
             'flex-height' => true,
         ) );
+
+
+        add_theme_support( 'post-thumbnails' );
+        set_post_thumbnail_size( 1200, 9999 );
 
         // This theme uses wp_nav_menu() in two locations.
         register_nav_menus( array(
@@ -57,5 +61,13 @@ function qsmt_the_custom_logo() {
         the_custom_logo();
     }
 
+}
+
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
+function special_nav_class($classes, $item){
+    if( in_array('current-menu-item', $classes) ){
+        $classes[] = 'active ';
+    }
+    return $classes;
 }
 
