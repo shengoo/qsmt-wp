@@ -30,6 +30,9 @@ if ( ! function_exists( 'qsmt_setup' ) ) :
             'primary' => __( 'Primary Menu',      'qsmt' ),
         ) );
 
+	    /* Customizer additions. */
+	    require get_template_directory() . '/inc/customizer.php';
+
 
     }
 endif; // qsmt_setup

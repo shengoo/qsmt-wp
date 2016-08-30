@@ -33,8 +33,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" style="color: #00ff00;">
-                <span><?php qsmt_the_custom_logo(); ?></span>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand" style="color: #00ff00;">
+                <?php
+                $qsmt_logo = get_theme_mod('qsmt_logo');
+                if( isset($qsmt_logo) && $qsmt_logo != ""):
+
+
+                echo '<span><img class="logo" src="'. $qsmt_logo .'"> </span>';
+
+                endif;
+                
+                ?>
                 <span class="site-title"><?php bloginfo( 'name' ); ?></span>
             </a>
         </div>
@@ -50,6 +59,7 @@
         </div><!--/.nav-collapse -->
     </div>
 </nav>
+<?php echo get_bloginfo( 'description', 'display' ); ?>
 <div>
     <div class="site-inner">
         <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>
