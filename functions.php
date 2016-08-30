@@ -15,11 +15,11 @@ if ( ! function_exists( 'qsmt_setup' ) ) :
          * Enable support for custom logo.
          *
          */
-        add_theme_support( 'custom-logo', array(
-            'height'      => 50,
-            'width'       => 50,
-            'flex-height' => true,
-        ) );
+//        add_theme_support( 'custom-logo', array(
+//            'height'      => 50,
+//            'width'       => 50,
+//            'flex-height' => true,
+//        ) );
 
 
         add_theme_support( 'post-thumbnails' );
