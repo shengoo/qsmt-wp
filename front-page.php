@@ -47,10 +47,6 @@ get_header();
 </div>
 
 <?php
-query_posts('category_name=uncategorized');
-while (have_posts()): the_post(); ?>
-    <h3><a href="<?php the_permalink(); ?>" title="Read full post"><?php the_title(); ?></a></h3>
-    <?php the_excerpt();
-endwhile;
+
 
 get_footer(); ?>
