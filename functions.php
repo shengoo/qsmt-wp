@@ -69,7 +69,7 @@ function qsmt_the_custom_logo()
 add_filter('nav_menu_css_class', 'special_nav_class', 10, 2);
 function special_nav_class($classes, $item)
 {
-    if (in_array('current-menu-item', $classes)) {
+    if (in_array('current-menu-item', $classes) || in_array('current-post-ancestor', $classes)) {
         $classes[] = 'active ';
     }
     return $classes;
@@ -98,4 +98,21 @@ function addHomeMenuLink($menuItems, $args)
 }
 
 add_filter('wp_nav_menu_items', 'addHomeMenuLink', 10, 2);
+
+
+
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+    register_post_type( 'about',
+        array(
+            'labels' => array(
+                'name' => '关于我们',
+                'singular_name' => 'about'
+            ),
+            'public' => true,
+            'has_archive' => true,
+        )
+    );
+}
+
 

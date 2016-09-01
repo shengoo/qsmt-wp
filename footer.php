@@ -12,45 +12,11 @@
 
 </div><!-- .site-content -->
 
-<footer id="colophon" class="site-footer" role="contentinfo">
-	<?php if ( has_nav_menu( 'primary' ) ) : ?>
-		<nav class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Primary Menu', 'twentysixteen' ); ?>">
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'primary',
-				'menu_class'     => 'primary-menu',
-			) );
-			?>
-		</nav><!-- .main-navigation -->
-	<?php endif; ?>
-
-	<?php if ( has_nav_menu( 'social' ) ) : ?>
-		<nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'twentysixteen' ); ?>">
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'social',
-				'menu_class'     => 'social-links-menu',
-				'depth'          => 1,
-				'link_before'    => '<span class="screen-reader-text">',
-				'link_after'     => '</span>',
-			) );
-			?>
-		</nav><!-- .social-navigation -->
-	<?php endif; ?>
-
-	<div class="site-info">
-		<?php
-		/**
-		 * Fires before the twentysixteen footer text for footer customization.
-		 *
-		 * @since Twenty Sixteen 1.0
-		 */
-		do_action( 'twentysixteen_credits' );
-		?>
-		<span class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
-		<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentysixteen' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentysixteen' ), 'WordPress' ); ?></a>
-	</div><!-- .site-info -->
-</footer><!-- .site-footer -->
+<div class="footer">
+	E-mail: info@qsmttech.com 电话: 010-84870490
+	<br>
+	版权所有: 北京青色麦田科技有限公司&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn/">京ICP备16039554号-1</a>
+</div>
 </div><!-- .site-inner -->
 </div><!-- .site -->
 

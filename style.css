@@ -22,3 +22,10 @@ nav.navbar{
 .logo{
     height:100%;
 }
+
+.footer{
+    background-color: #222;
+    padding:40px 0 20px 0;
+    text-align: center;
+    color: #fff;;
+}
