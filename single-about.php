@@ -28,31 +28,46 @@ if ( is_single() ) {
         );
         $my_query = new WP_Query($args);
         if( $my_query->have_posts() ) {
+            ?>
+
+<div class="container" style="padding: 20px 0;">
+    <nav class="nav leftnav col-xs-12 col-sm-2 container" style="padding-bottom: 20px;">
+            <?php
+
             while ($my_query->have_posts()) : $my_query->the_post();
                 if($post->ID == $IDOutsideLoop){
 ?>
-                    <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+                    <li class="col-xs-3 col-sm-12 text-center"><a href="<?php the_permalink() ?>" class="active"><?php the_title(); ?></a></li>
                     <?php
                 }else{
                 ?>
-                <p><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
+
+                    <li class="col-xs-3 col-sm-12 text-center"><a href="<?php the_permalink() ?>" class=""><?php the_title(); ?></a></li>
                 <?php
                 }
             endwhile;
         } //if ($my_query)
+            ?>
+
+    </nav>
+        <?php
+
     } //if ($cats)
     wp_reset_query();  // Restore global post data stomped by the_post().
 } //if (is_single())
 ?>
+        <div class="col-xs-12 col-sm-10 container" style="text-indent: 20px;">
+            <?php the_content();?>
+        </div>
+    </div>
 
 
-    <h2><?php the_title(); ?></h2>
-<div><?php the_content();?></div>
 <script>
     jQuery(function($) {
         // 你可以在这里继续使用$作为别名...
-
+console.log($('#menu-top li').eq(1))
         $('#menu-top li').eq(1).addClass('active');
+        $('#menu-nav li').eq(1).addClass('active');
     });
 </script>
 <?php get_footer(); ?>

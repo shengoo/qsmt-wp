@@ -23,9 +23,133 @@ nav.navbar{
     height:100%;
 }
 
+
+
+
+.navbar-brand>img{
+    height:100%;
+}
+
+nav.leftnav>div{
+    padding:0;
+}
+nav.leftnav a{
+    color: #000;
+    padding:5px;
+    /*float: right;*/
+    border-radius: 10px;
+}
+nav.leftnav a.active{
+    color: #fff;
+    background-color: #1864CD;
+}
+
+.service-item{
+
+}
+.service-item::before{
+    position: absolute;
+    content: ' ';
+    top: 28px;
+    border-top: 1px solid #eee;
+    width: 100%;
+    z-index: -1;
+}
+.service-item-icon{
+    width: 56px;
+    height:56px;
+    margin: auto;
+    /*background-image: url("../images/serviceitem1.png");*/
+    text-align: center;
+    border-radius: 50%;
+    border:1px solid #D7D7D7;
+    background: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+}
+.service-item-icon1{
+    background-image: url("../images/serviceitem1.png");
+}
+.service-item-icon2{
+    background-image: url("../images/serviceitem2.png");
+}
+.service-item-icon3{
+    background-image: url("../images/serviceitem3.png");
+}
+.service-item-icon4{
+    background-image: url("../images/serviceitem4.png");
+}
+.service-item-icon5{
+    background-image: url("../images/serviceitem5.png");
+}
+.service-item-icon6{
+    background-image: url("../images/serviceitem6.png");
+}
+.service-item-icon .fa{
+    font-size: 2em;
+}
+.service-item-title{
+    color:#226AC8;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.service-item-content ul{
+    min-height:160px;
+    padding-left: 10px;
+}
+.service-item-content li{
+    list-style: none;
+    position: relative;
+    font-size: .8em;
+}
+.service-item-content li::before{
+    content: ' ';
+    width: 6px;
+    position: absolute;
+    height: 1px;
+    background: #B5B5B5;
+    left: -10px;
+    top: 8px;
+}
+
+.about li{
+    list-style: none;
+    position: relative;
+    margin: 10px auto;
+}
+.about li::before{
+    content: ' ';
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    background: #1F5EA8;
+    left: -20px;
+    top: 4px;
+}
+
 .footer{
     background-color: #222;
     padding:40px 0 20px 0;
     text-align: center;
     color: #fff;;
+}
+
+.anli-item img{
+    width:100%;
+}
+.anli-item{
+    padding:5px;
+}
+.anli-more img{
+    display: block;
+    margin: auto;
+    padding: 40px;
+}
+
+.fangan-list li{
+    list-style: none;
+    text-align: center;
+    font-size: 1.5em;
 }
