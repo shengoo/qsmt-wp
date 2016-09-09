@@ -57,24 +57,9 @@ function zerif_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
-	$wp_customize->remove_section('colors');
+//	$wp_customize->remove_section('colors');
 
-	/**********************************************/
-	/*************** ORDER ************************/
-	/**********************************************/
 
-	$wp_customize->add_section( 'zerif_order_section', array(
-		'title'	=> __( 'Sections order and Colors', 'zerif-lite' ),
-		'priority' => 28
-	));
-
-	$wp_customize->add_setting( 'zerif_order_section', array(
-		'sanitize_callback' => 'sanitize_text_field'
-	));
-
-	$wp_customize->add_control( new Zerif_Theme_Support( $wp_customize, 'zerif_order_section', array(
-		'section' => 'zerif_order_section',
-	)));
 
 	/***********************************************/
 	/************** GENERAL OPTIONS  ***************/
@@ -86,23 +71,23 @@ function zerif_customize_register( $wp_customize ) {
 			'capability' => 'edit_theme_options',
 			'title' => __( 'General options', 'zerif-lite' )
 		));
-
-		$wp_customize->add_section( 'zerif_general_section' , array(
-			'title' => __( 'General', 'zerif-lite' ),
-			'priority' => 30,
-			'panel' => 'panel_general'
-		));
-
-		$wp_customize->add_setting( 'zerif_use_safe_font', array(
-			'sanitize_callback' => 'zerif_sanitize_checkbox'
-		));
-
-		$wp_customize->add_control( 'zerif_use_safe_font', array(
-			'type' 		=> 'checkbox',
-			'label' 	=> 'Use safe font?',
-			'section' 	=> 'zerif_general_section',
-			'priority'	=> 1
-		));
+//
+//		$wp_customize->add_section( 'zerif_general_section' , array(
+//			'title' => __( 'General', 'zerif-lite' ),
+//			'priority' => 30,
+//			'panel' => 'panel_general'
+//		));
+//
+//		$wp_customize->add_setting( 'zerif_use_safe_font', array(
+//			'sanitize_callback' => 'zerif_sanitize_checkbox'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_use_safe_font', array(
+//			'type' 		=> 'checkbox',
+//			'label' 	=> 'Use safe font?',
+//			'section' 	=> 'zerif_general_section',
+//			'priority'	=> 1
+//		));
 
 		/* LOGO	*/
 		$wp_customize->add_setting( 'qsmt_logo', array(
@@ -136,40 +121,40 @@ function zerif_customize_register( $wp_customize ) {
 
 
 		/* Disable preloader */
-		$wp_customize->add_setting( 'zerif_disable_preloader', array(
-			'sanitize_callback' => 'zerif_sanitize_checkbox'
-		));
-
-		$wp_customize->add_control( 'zerif_disable_preloader', array(
-			'type' => 'checkbox',
-			'label' => __('Disable preloader?','zerif-lite'),
-			'section' => 'zerif_general_section',
-			'priority' => 2,
-		));
+//		$wp_customize->add_setting( 'zerif_disable_preloader', array(
+//			'sanitize_callback' => 'zerif_sanitize_checkbox'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_disable_preloader', array(
+//			'type' => 'checkbox',
+//			'label' => __('Disable preloader?','zerif-lite'),
+//			'section' => 'zerif_general_section',
+//			'priority' => 2,
+//		));
 
 		/* Disable smooth scroll */
-		$wp_customize->add_setting( 'zerif_disable_smooth_scroll', array(
-			'sanitize_callback' => 'zerif_sanitize_checkbox'
-		));
-
-		$wp_customize->add_control( 'zerif_disable_smooth_scroll', array(
-			'type' 		=> 'checkbox',
-			'label' 	=> __('Disable smooth scroll?','zerif-lite'),
-			'section' 	=> 'zerif_general_section',
-			'priority'	=> 3,
-		));
+//		$wp_customize->add_setting( 'zerif_disable_smooth_scroll', array(
+//			'sanitize_callback' => 'zerif_sanitize_checkbox'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_disable_smooth_scroll', array(
+//			'type' 		=> 'checkbox',
+//			'label' 	=> __('Disable smooth scroll?','zerif-lite'),
+//			'section' 	=> 'zerif_general_section',
+//			'priority'	=> 3,
+//		));
 
 		/* Enable accessibility */
-		$wp_customize->add_setting( 'zerif_accessibility', array(
-			'sanitize_callback' => 'zerif_sanitize_checkbox'
-		));
-
-		$wp_customize->add_control( 'zerif_accessibility', array(
-			'type' 		=> 'checkbox',
-			'label' 	=> __('Enable accessibility?','zerif-lite'),
-			'section' 	=> 'zerif_general_section',
-			'priority'	=> 4,
-		));
+//		$wp_customize->add_setting( 'zerif_accessibility', array(
+//			'sanitize_callback' => 'zerif_sanitize_checkbox'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_accessibility', array(
+//			'type' 		=> 'checkbox',
+//			'label' 	=> __('Enable accessibility?','zerif-lite'),
+//			'section' 	=> 'zerif_general_section',
+//			'priority'	=> 4,
+//		));
 
 		/* COPYRIGHT */
 		$wp_customize->add_setting( 'zerif_copyright', array(

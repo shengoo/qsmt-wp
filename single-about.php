@@ -13,6 +13,11 @@ get_header();
 //    echo var_dump(get_the_category());
 //endwhile;
 ?>
+
+    <div>
+        <img src="mt.jpg" style="width: 100%;height: 20vw;">
+    </div>
+
 <?php
 if ( is_single() ) {
     $IDOutsideLoop = $post->ID;
