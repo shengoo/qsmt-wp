@@ -101,19 +101,19 @@ add_filter('wp_nav_menu_items', 'addHomeMenuLink', 10, 2);
 
 
 
-add_action( 'init', 'create_post_type' );
-function create_post_type() {
-    register_post_type( 'about',
-        array(
-            'labels' => array(
-                'name' => '关于我们',
-                'singular_name' => 'about'
-            ),
-            'public' => true,
-            'has_archive' => true,
-        )
-    );
-}
+//add_action( 'init', 'create_post_type' );
+//function create_post_type() {
+//    register_post_type( 'about',
+//        array(
+//            'labels' => array(
+//                'name' => '关于我们',
+//                'singular_name' => 'about'
+//            ),
+//            'public' => true,
+//            'has_archive' => true,
+//        )
+//    );
+//}
 
 
 //Gets post cat slug and looks for single-[cat slug].php and applies it
