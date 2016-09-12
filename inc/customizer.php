@@ -539,426 +539,440 @@ function zerif_customize_register( $wp_customize ) {
 	/**************	BIG TITLE SECTION *******************/
 	/****************************************************/
 
-	if ( class_exists( 'WP_Customize_Panel' ) ):
-
-		$wp_customize->add_panel( 'panel_big_title', array(
-			'priority' => 31,
-			'capability' => 'edit_theme_options',
-			'title' => __( 'Big title section', 'zerif-lite' )
-		));
-
-		$wp_customize->add_section( 'zerif_bigtitle_section' , array(
-			'title'       => __( 'Main content', 'zerif-lite' ),
-			'priority'    => 1,
-			'panel'       => 'panel_big_title'
-		));
-
-		/* show/hide */
-		$wp_customize->add_setting( 'zerif_bigtitle_show', array(
-			'sanitize_callback' => 'zerif_sanitize_checkbox',
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_bigtitle_show', array(
-			'type' => 'checkbox',
-			'label' => __('Hide big title section?','zerif-lite'),
-			'section' => 'zerif_bigtitle_section',
-			'priority'    => 1,
-		));
-
-		/* title */
-		$wp_customize->add_setting( 'zerif_bigtitle_title', array(
-			'sanitize_callback' => 'zerif_sanitize_input',
-			'default' => __('ONE OF THE TOP 10 MOST POPULAR THEMES ON WORDPRESS.ORG','zerif-lite'),
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_bigtitle_title', array(
-			'label'    => __( 'Title', 'zerif-lite' ),
-			'section'  => 'zerif_bigtitle_section',
-			'priority'    => 2,
-		));
-
-		/* red button */
-		$wp_customize->add_setting( 'zerif_bigtitle_redbutton_label', array(
-			'sanitize_callback' => 'zerif_sanitize_input',
-			'default' => __('Features','zerif-lite'),
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_bigtitle_redbutton_label', array(
-			'label'    => __( 'Red button label', 'zerif-lite' ),
-			'section'  => 'zerif_bigtitle_section',
-			'priority'    => 3,
-		));
-
-		$wp_customize->add_setting( 'zerif_bigtitle_redbutton_url', array(
-			'sanitize_callback' => 'esc_url_raw',
-			'default' => esc_url( home_url( '/' ) ).'#focus',
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_bigtitle_redbutton_url', array(
-			'label'    => __( 'Red button link', 'zerif-lite' ),
-			'section'  => 'zerif_bigtitle_section',
-			'priority'    => 4,
-		));
-
-		/* green button */
-		$wp_customize->add_setting( 'zerif_bigtitle_greenbutton_label', array(
-			'sanitize_callback' => 'zerif_sanitize_input',
-			'default' => __("What's inside",'zerif-lite'),
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_bigtitle_greenbutton_label', array(
-			'label'    => __( 'Green button label', 'zerif-lite' ),
-			'section'  => 'zerif_bigtitle_section',
-			'priority'    => 5,
-		));
-
-		$wp_customize->add_setting( 'zerif_bigtitle_greenbutton_url', array(
-			'sanitize_callback' => 'esc_url_raw',
-			'default' => esc_url( home_url( '/' ) ).'#focus',
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_bigtitle_greenbutton_url', array(
-			'label'    => __( 'Green button link', 'zerif-lite' ),
-			'section'  => 'zerif_bigtitle_section',
-			'priority'    => 6,
-		));
-
-		/****************************************************/
-		/************	PARALLAX IMAGES *********************/
-		/****************************************************/
-
-		$wp_customize->add_section( 'zerif_parallax_section' , array(
-			'title'       => __( 'Parallax effect', 'zerif-lite' ),
-			'priority'    => 2,
-			'panel'       => 'panel_big_title'
-		));
-
-		/* show/hide */
-		$wp_customize->add_setting( 'zerif_parallax_show', array(
-			'sanitize_callback' => 'zerif_sanitize_checkbox'
-		));
-
-		$wp_customize->add_control( 'zerif_parallax_show', array(
-			'type' 		=> 'checkbox',
-			'label' 	=> __('Use parallax effect?','zerif-lite'),
-			'section' 	=> 'zerif_parallax_section',
-			'priority'	=> 1,
-		));
-
-		/* IMAGE 1*/
-		$wp_customize->add_setting( 'zerif_parallax_img1', array(
-			'sanitize_callback' => 'esc_url_raw',
-			'default' => get_template_directory_uri() . '/images/background1.jpg'
-		));
-
-		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_parallax_img1', array(
-			'label'    	=> __( 'Image 1', 'zerif-lite' ),
-			'section'  	=> 'zerif_parallax_section',
-			'settings' 	=> 'zerif_parallax_img1',
-			'priority'	=> 1,
-		)));
-
-		/* IMAGE 2 */
-		$wp_customize->add_setting( 'zerif_parallax_img2', array(
-			'sanitize_callback' => 'esc_url_raw',
-			'default' => get_template_directory_uri() . '/images/background2.png'
-		));
-
-		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_parallax_img2', array(
-			'label'    	=> __( 'Image 2', 'zerif-lite' ),
-			'section'  	=> 'zerif_parallax_section',
-			'settings' 	=> 'zerif_parallax_img2',
-			'priority'	=> 2,
-		)));
-
-		/*************************************************************/
-		/************* Video background(available in pro) ************/
-		/*************************************************************/
-
-		$wp_customize->add_section( 'zerif_videobackground_in_pro_section' , array(
-			'title'       => __( 'Video background', 'zerif-lite' ),
-			'priority'    => 3,
-			'panel'       => 'panel_big_title'
-		));
-
-		$wp_customize->add_setting( 'zerif_videobackground_in_pro', array(
-			'sanitize_callback' => 'sanitize_text_field'
-		));
-
-		$wp_customize->add_control( new Zerif_Theme_Support_Videobackground( $wp_customize, 'zerif_videobackground_in_pro', array(
-			'section' => 'zerif_videobackground_in_pro_section',
-		)));
-
-	else:
-
-		$wp_customize->add_section( 'zerif_bigtitle_section' , array(
-			'title'       => __( 'Big title section', 'zerif-lite' ),
-			'priority'    => 31
-		));
-
-		/* show/hide */
-		$wp_customize->add_setting( 'zerif_bigtitle_show', array(
-			'sanitize_callback' => 'zerif_sanitize_checkbox',
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_bigtitle_show', array(
-			'type' => 'checkbox',
-			'label' => __('Hide big title section?','zerif-lite'),
-			'section' => 'zerif_bigtitle_section',
-			'priority'    => 1,
-		));
-
-		/* title */
-		$wp_customize->add_setting( 'zerif_bigtitle_title', array(
-			'sanitize_callback' => 'zerif_sanitize_input',
-			'default' => __('ONE OF THE TOP 10 MOST POPULAR THEMES ON WORDPRESS.ORG','zerif-lite'),
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_bigtitle_title', array(
-			'label'    => __( 'Title', 'zerif-lite' ),
-			'section'  => 'zerif_bigtitle_section',
-			'priority'    => 2,
-		));
-
-		/* red button */
-		$wp_customize->add_setting( 'zerif_bigtitle_redbutton_label', array(
-			'sanitize_callback' => 'zerif_sanitize_input',
-			'default' => __('Features','zerif-lite'),
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_bigtitle_redbutton_label', array(
-			'label'    => __( 'Red button label', 'zerif-lite' ),
-			'section'  => 'zerif_bigtitle_section',
-			'priority'    => 3,
-		));
-
-		$wp_customize->add_setting( 'zerif_bigtitle_redbutton_url', array(
-			'sanitize_callback' => 'esc_url_raw',
-			'default' => esc_url( home_url( '/' ) ).'#focus',
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_bigtitle_redbutton_url', array(
-			'label'    => __( 'Red button link', 'zerif-lite' ),
-			'section'  => 'zerif_bigtitle_section',
-			'priority'    => 4,
-		));
-
-		/* green button */
-		$wp_customize->add_setting( 'zerif_bigtitle_greenbutton_label', array(
-			'sanitize_callback' => 'zerif_sanitize_input',
-			'default' => __("What's inside",'zerif-lite'),
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_bigtitle_greenbutton_label', array(
-			'label'    => __( 'Green button label', 'zerif-lite' ),
-			'section'  => 'zerif_bigtitle_section',
-			'priority'    => 5,
-		));
-
-		$wp_customize->add_setting( 'zerif_bigtitle_greenbutton_url', array(
-			'sanitize_callback' => 'esc_url_raw',
-			'default' => esc_url( home_url( '/' ) ).'#focus',
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_bigtitle_greenbutton_url', array(
-			'label'    => __( 'Green button link', 'zerif-lite' ),
-			'section'  => 'zerif_bigtitle_section',
-			'priority'    => 6,
-		));
-
-		/****************************************************/
-		/************	PARALLAX IMAGES *********************/
-		/****************************************************/
-		$wp_customize->add_section( 'zerif_parallax_section' , array(
-			'title'       => __( 'Parallax effect', 'zerif-lite' ),
-			'priority'    => 60
-		));
-
-		/* show/hide */
-		$wp_customize->add_setting( 'zerif_parallax_show', array(
-			'sanitize_callback' => 'zerif_sanitize_checkbox'
-		));
-
-		$wp_customize->add_control( 'zerif_parallax_show', array(
-			'type' 		=> 'checkbox',
-			'label' 	=> __('Use parallax effect?','zerif-lite'),
-			'section' 	=> 'zerif_parallax_section',
-			'priority'	=> 1,
-		));
-
-		/* IMAGE 1*/
-		$wp_customize->add_setting( 'zerif_parallax_img1', array(
-			'sanitize_callback' => 'esc_url_raw',
-			'default' => get_template_directory_uri() . '/images/background1.jpg'
-		));
-
-		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_parallax_img1', array(
-			'label'    	=> __( 'Image 1', 'zerif-lite' ),
-			'section'  	=> 'zerif_parallax_section',
-			'settings' 	=> 'zerif_parallax_img1',
-			'priority'	=> 1,
-		)));
-
-		/* IMAGE 2 */
-		$wp_customize->add_setting( 'zerif_parallax_img2', array(
-			'sanitize_callback' => 'esc_url_raw',
-			'default' => get_template_directory_uri() . '/images/background2.png'
-		));
-
-		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_parallax_img2', array(
-			'label'    	=> __( 'Image 2', 'zerif-lite' ),
-			'section'  	=> 'zerif_parallax_section',
-			'settings' 	=> 'zerif_parallax_img2',
-			'priority'	=> 2,
-		)));
-
-		/*************************************************************/
-		/************* Video background(available in pro) ************/
-		/*************************************************************/
-
-		$wp_customize->add_section( 'zerif_videobackground_in_pro_section' , array(
-			'title'       => __( 'Video background', 'zerif-lite' ),
-			'priority'    => 61
-		));
-
-		$wp_customize->add_setting( 'zerif_videobackground_in_pro', array(
-			'sanitize_callback' => 'sanitize_text_field'
-		));
-
-		$wp_customize->add_control( new Zerif_Theme_Support_Videobackground( $wp_customize, 'zerif_videobackground_in_pro', array(
-			'section' => 'zerif_videobackground_in_pro_section',
-		)));
-
-	endif;
+//	if ( class_exists( 'WP_Customize_Panel' ) ):
+//
+//		$wp_customize->add_panel( 'panel_big_title', array(
+//			'priority' => 31,
+//			'capability' => 'edit_theme_options',
+//			'title' => __( 'Big title section', 'zerif-lite' )
+//		));
+//
+//		$wp_customize->add_section( 'zerif_bigtitle_section' , array(
+//			'title'       => __( 'Main content', 'zerif-lite' ),
+//			'priority'    => 1,
+//			'panel'       => 'panel_big_title'
+//		));
+//
+//		/* show/hide */
+//		$wp_customize->add_setting( 'zerif_bigtitle_show', array(
+//			'sanitize_callback' => 'zerif_sanitize_checkbox',
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_bigtitle_show', array(
+//			'type' => 'checkbox',
+//			'label' => __('Hide big title section?','zerif-lite'),
+//			'section' => 'zerif_bigtitle_section',
+//			'priority'    => 1,
+//		));
+//
+//		/* title */
+//		$wp_customize->add_setting( 'zerif_bigtitle_title', array(
+//			'sanitize_callback' => 'zerif_sanitize_input',
+//			'default' => __('ONE OF THE TOP 10 MOST POPULAR THEMES ON WORDPRESS.ORG','zerif-lite'),
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_bigtitle_title', array(
+//			'label'    => __( 'Title', 'zerif-lite' ),
+//			'section'  => 'zerif_bigtitle_section',
+//			'priority'    => 2,
+//		));
+//
+//		/* red button */
+//		$wp_customize->add_setting( 'zerif_bigtitle_redbutton_label', array(
+//			'sanitize_callback' => 'zerif_sanitize_input',
+//			'default' => __('Features','zerif-lite'),
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_bigtitle_redbutton_label', array(
+//			'label'    => __( 'Red button label', 'zerif-lite' ),
+//			'section'  => 'zerif_bigtitle_section',
+//			'priority'    => 3,
+//		));
+//
+//		$wp_customize->add_setting( 'zerif_bigtitle_redbutton_url', array(
+//			'sanitize_callback' => 'esc_url_raw',
+//			'default' => esc_url( home_url( '/' ) ).'#focus',
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_bigtitle_redbutton_url', array(
+//			'label'    => __( 'Red button link', 'zerif-lite' ),
+//			'section'  => 'zerif_bigtitle_section',
+//			'priority'    => 4,
+//		));
+//
+//		/* green button */
+//		$wp_customize->add_setting( 'zerif_bigtitle_greenbutton_label', array(
+//			'sanitize_callback' => 'zerif_sanitize_input',
+//			'default' => __("What's inside",'zerif-lite'),
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_bigtitle_greenbutton_label', array(
+//			'label'    => __( 'Green button label', 'zerif-lite' ),
+//			'section'  => 'zerif_bigtitle_section',
+//			'priority'    => 5,
+//		));
+//
+//		$wp_customize->add_setting( 'zerif_bigtitle_greenbutton_url', array(
+//			'sanitize_callback' => 'esc_url_raw',
+//			'default' => esc_url( home_url( '/' ) ).'#focus',
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_bigtitle_greenbutton_url', array(
+//			'label'    => __( 'Green button link', 'zerif-lite' ),
+//			'section'  => 'zerif_bigtitle_section',
+//			'priority'    => 6,
+//		));
+//
+//		/****************************************************/
+//		/************	PARALLAX IMAGES *********************/
+//		/****************************************************/
+//
+//		$wp_customize->add_section( 'zerif_parallax_section' , array(
+//			'title'       => __( 'Parallax effect', 'zerif-lite' ),
+//			'priority'    => 2,
+//			'panel'       => 'panel_big_title'
+//		));
+//
+//		/* show/hide */
+//		$wp_customize->add_setting( 'zerif_parallax_show', array(
+//			'sanitize_callback' => 'zerif_sanitize_checkbox'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_parallax_show', array(
+//			'type' 		=> 'checkbox',
+//			'label' 	=> __('Use parallax effect?','zerif-lite'),
+//			'section' 	=> 'zerif_parallax_section',
+//			'priority'	=> 1,
+//		));
+//
+//		/* IMAGE 1*/
+//		$wp_customize->add_setting( 'zerif_parallax_img1', array(
+//			'sanitize_callback' => 'esc_url_raw',
+//			'default' => get_template_directory_uri() . '/images/background1.jpg'
+//		));
+//
+//		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_parallax_img1', array(
+//			'label'    	=> __( 'Image 1', 'zerif-lite' ),
+//			'section'  	=> 'zerif_parallax_section',
+//			'settings' 	=> 'zerif_parallax_img1',
+//			'priority'	=> 1,
+//		)));
+//
+//		/* IMAGE 2 */
+//		$wp_customize->add_setting( 'zerif_parallax_img2', array(
+//			'sanitize_callback' => 'esc_url_raw',
+//			'default' => get_template_directory_uri() . '/images/background2.png'
+//		));
+//
+//		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_parallax_img2', array(
+//			'label'    	=> __( 'Image 2', 'zerif-lite' ),
+//			'section'  	=> 'zerif_parallax_section',
+//			'settings' 	=> 'zerif_parallax_img2',
+//			'priority'	=> 2,
+//		)));
+//
+//		/*************************************************************/
+//		/************* Video background(available in pro) ************/
+//		/*************************************************************/
+//
+//		$wp_customize->add_section( 'zerif_videobackground_in_pro_section' , array(
+//			'title'       => __( 'Video background', 'zerif-lite' ),
+//			'priority'    => 3,
+//			'panel'       => 'panel_big_title'
+//		));
+//
+//		$wp_customize->add_setting( 'zerif_videobackground_in_pro', array(
+//			'sanitize_callback' => 'sanitize_text_field'
+//		));
+//
+//		$wp_customize->add_control( new Zerif_Theme_Support_Videobackground( $wp_customize, 'zerif_videobackground_in_pro', array(
+//			'section' => 'zerif_videobackground_in_pro_section',
+//		)));
+//
+//	else:
+//
+//		$wp_customize->add_section( 'zerif_bigtitle_section' , array(
+//			'title'       => __( 'Big title section', 'zerif-lite' ),
+//			'priority'    => 31
+//		));
+//
+//		/* show/hide */
+//		$wp_customize->add_setting( 'zerif_bigtitle_show', array(
+//			'sanitize_callback' => 'zerif_sanitize_checkbox',
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_bigtitle_show', array(
+//			'type' => 'checkbox',
+//			'label' => __('Hide big title section?','zerif-lite'),
+//			'section' => 'zerif_bigtitle_section',
+//			'priority'    => 1,
+//		));
+//
+//		/* title */
+//		$wp_customize->add_setting( 'zerif_bigtitle_title', array(
+//			'sanitize_callback' => 'zerif_sanitize_input',
+//			'default' => __('ONE OF THE TOP 10 MOST POPULAR THEMES ON WORDPRESS.ORG','zerif-lite'),
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_bigtitle_title', array(
+//			'label'    => __( 'Title', 'zerif-lite' ),
+//			'section'  => 'zerif_bigtitle_section',
+//			'priority'    => 2,
+//		));
+//
+//		/* red button */
+//		$wp_customize->add_setting( 'zerif_bigtitle_redbutton_label', array(
+//			'sanitize_callback' => 'zerif_sanitize_input',
+//			'default' => __('Features','zerif-lite'),
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_bigtitle_redbutton_label', array(
+//			'label'    => __( 'Red button label', 'zerif-lite' ),
+//			'section'  => 'zerif_bigtitle_section',
+//			'priority'    => 3,
+//		));
+//
+//		$wp_customize->add_setting( 'zerif_bigtitle_redbutton_url', array(
+//			'sanitize_callback' => 'esc_url_raw',
+//			'default' => esc_url( home_url( '/' ) ).'#focus',
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_bigtitle_redbutton_url', array(
+//			'label'    => __( 'Red button link', 'zerif-lite' ),
+//			'section'  => 'zerif_bigtitle_section',
+//			'priority'    => 4,
+//		));
+//
+//		/* green button */
+//		$wp_customize->add_setting( 'zerif_bigtitle_greenbutton_label', array(
+//			'sanitize_callback' => 'zerif_sanitize_input',
+//			'default' => __("What's inside",'zerif-lite'),
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_bigtitle_greenbutton_label', array(
+//			'label'    => __( 'Green button label', 'zerif-lite' ),
+//			'section'  => 'zerif_bigtitle_section',
+//			'priority'    => 5,
+//		));
+//
+//		$wp_customize->add_setting( 'zerif_bigtitle_greenbutton_url', array(
+//			'sanitize_callback' => 'esc_url_raw',
+//			'default' => esc_url( home_url( '/' ) ).'#focus',
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_bigtitle_greenbutton_url', array(
+//			'label'    => __( 'Green button link', 'zerif-lite' ),
+//			'section'  => 'zerif_bigtitle_section',
+//			'priority'    => 6,
+//		));
+//
+//		/****************************************************/
+//		/************	PARALLAX IMAGES *********************/
+//		/****************************************************/
+//		$wp_customize->add_section( 'zerif_parallax_section' , array(
+//			'title'       => __( 'Parallax effect', 'zerif-lite' ),
+//			'priority'    => 60
+//		));
+//
+//		/* show/hide */
+//		$wp_customize->add_setting( 'zerif_parallax_show', array(
+//			'sanitize_callback' => 'zerif_sanitize_checkbox'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_parallax_show', array(
+//			'type' 		=> 'checkbox',
+//			'label' 	=> __('Use parallax effect?','zerif-lite'),
+//			'section' 	=> 'zerif_parallax_section',
+//			'priority'	=> 1,
+//		));
+//
+//		/* IMAGE 1*/
+//		$wp_customize->add_setting( 'zerif_parallax_img1', array(
+//			'sanitize_callback' => 'esc_url_raw',
+//			'default' => get_template_directory_uri() . '/images/background1.jpg'
+//		));
+//
+//		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_parallax_img1', array(
+//			'label'    	=> __( 'Image 1', 'zerif-lite' ),
+//			'section'  	=> 'zerif_parallax_section',
+//			'settings' 	=> 'zerif_parallax_img1',
+//			'priority'	=> 1,
+//		)));
+//
+//		/* IMAGE 2 */
+//		$wp_customize->add_setting( 'zerif_parallax_img2', array(
+//			'sanitize_callback' => 'esc_url_raw',
+//			'default' => get_template_directory_uri() . '/images/background2.png'
+//		));
+//
+//		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_parallax_img2', array(
+//			'label'    	=> __( 'Image 2', 'zerif-lite' ),
+//			'section'  	=> 'zerif_parallax_section',
+//			'settings' 	=> 'zerif_parallax_img2',
+//			'priority'	=> 2,
+//		)));
+//
+//		/*************************************************************/
+//		/************* Video background(available in pro) ************/
+//		/*************************************************************/
+//
+//		$wp_customize->add_section( 'zerif_videobackground_in_pro_section' , array(
+//			'title'       => __( 'Video background', 'zerif-lite' ),
+//			'priority'    => 61
+//		));
+//
+//		$wp_customize->add_setting( 'zerif_videobackground_in_pro', array(
+//			'sanitize_callback' => 'sanitize_text_field'
+//		));
+//
+//		$wp_customize->add_control( new Zerif_Theme_Support_Videobackground( $wp_customize, 'zerif_videobackground_in_pro', array(
+//			'section' => 'zerif_videobackground_in_pro_section',
+//		)));
+//
+//	endif;
 
 
 	/********************************************************************/
 	/*************  OUR FOCUS SECTION **********************************/
 	/********************************************************************/
-	if ( class_exists( 'WP_Customize_Panel' ) ):
-
-		$wp_customize->add_panel( 'panel_ourfocus', array(
-			'priority' => 32,
-			'capability' => 'edit_theme_options',
-			'title' => __( 'Our focus section', 'zerif-lite' )
-		));
-
-		$wp_customize->add_section( 'zerif_ourfocus_section' , array(
-			'title'       => __( 'Content', 'zerif-lite' ),
-			'priority'    => 1,
-			'panel'       => 'panel_ourfocus'
-		));
-
-		/* show/hide */
-		$wp_customize->add_setting( 'zerif_ourfocus_show', array(
-			'sanitize_callback' => 'zerif_sanitize_checkbox',
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_ourfocus_show', array(
-			'type' => 'checkbox',
-			'label' => __('Hide our focus section?','zerif-lite'),
-			'section' => 'zerif_ourfocus_section',
-			'priority'    => 1,
-		));
-
-		/* our focus title */
-		$wp_customize->add_setting( 'zerif_ourfocus_title', array(
-			'sanitize_callback' => 'zerif_sanitize_input',
-			'default' => __('FEATURES','zerif-lite'),
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_ourfocus_title', array(
-			'label'    => __( 'Title', 'zerif-lite' ),
-			'section'  => 'zerif_ourfocus_section',
-			'priority'    => 2,
-		));
-
-		/* our focus subtitle */
-		$wp_customize->add_setting( 'zerif_ourfocus_subtitle', array(
-			'sanitize_callback' => 'zerif_sanitize_input',
-			'default' => __('What makes this single-page WordPress theme unique.','zerif-lite'),
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_ourfocus_subtitle', array(
-			'label'    => __( 'Our focus subtitle', 'zerif-lite' ),
-			'section'  => 'zerif_ourfocus_section',
-			'priority'    => 3,
-		));
-
-	else:
-
-		$wp_customize->add_section( 'zerif_ourfocus_section' , array(
-			'title'       => __( 'Our focus section', 'zerif-lite' ),
-			'priority'    => 32,
-			'description' => __( 'The main content of this section is customizable in: Dashboard -> Appearance -> Widgets -> Our focus section. There you must add the "Zerif - Our focus widget"', 'zerif-lite' )
-		));
-
-		/* show/hide */
-		$wp_customize->add_setting( 'zerif_ourfocus_show', array(
-			'sanitize_callback' => 'zerif_sanitize_checkbox',
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_ourfocus_show', array(
-			'type' => 'checkbox',
-			'label' => __('Hide our focus section?','zerif-lite'),
-			'section' => 'zerif_ourfocus_section',
-			'priority'    => 1,
-		));
-
-		/* our focus title */
-		$wp_customize->add_setting( 'zerif_ourfocus_title', array(
-			'sanitize_callback' => 'zerif_sanitize_input',
-			'default' => __('FEATURES','zerif-lite'),
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_ourfocus_title', array(
-			'label'    => __( 'Title', 'zerif-lite' ),
-			'section'  => 'zerif_ourfocus_section',
-			'priority'    => 2,
-		));
-
-		/* our focus subtitle */
-		$wp_customize->add_setting( 'zerif_ourfocus_subtitle', array(
-			'sanitize_callback' => 'zerif_sanitize_input',
-			'default' => __('What makes this single-page WordPress theme unique.','zerif-lite'),
-			'transport' => 'postMessage'
-		));
-
-		$wp_customize->add_control( 'zerif_ourfocus_subtitle', array(
-			'label'    => __( 'Our focus subtitle', 'zerif-lite' ),
-			'section'  => 'zerif_ourfocus_section',
-			'priority'    => 3,
-		));
-
-	endif;
+//	if ( class_exists( 'WP_Customize_Panel' ) ):
+//
+//		$wp_customize->add_panel( 'panel_ourfocus', array(
+//			'priority' => 32,
+//			'capability' => 'edit_theme_options',
+//			'title' => __( 'Our focus section', 'zerif-lite' )
+//		));
+//
+//		$wp_customize->add_section( 'zerif_ourfocus_section' , array(
+//			'title'       => __( 'Content', 'zerif-lite' ),
+//			'priority'    => 1,
+//			'panel'       => 'panel_ourfocus'
+//		));
+//
+//		/* show/hide */
+//		$wp_customize->add_setting( 'zerif_ourfocus_show', array(
+//			'sanitize_callback' => 'zerif_sanitize_checkbox',
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_ourfocus_show', array(
+//			'type' => 'checkbox',
+//			'label' => __('Hide our focus section?','zerif-lite'),
+//			'section' => 'zerif_ourfocus_section',
+//			'priority'    => 1,
+//		));
+//
+//		/* our focus title */
+//		$wp_customize->add_setting( 'zerif_ourfocus_title', array(
+//			'sanitize_callback' => 'zerif_sanitize_input',
+//			'default' => __('FEATURES','zerif-lite'),
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_ourfocus_title', array(
+//			'label'    => __( 'Title', 'zerif-lite' ),
+//			'section'  => 'zerif_ourfocus_section',
+//			'priority'    => 2,
+//		));
+//
+//		/* our focus subtitle */
+//		$wp_customize->add_setting( 'zerif_ourfocus_subtitle', array(
+//			'sanitize_callback' => 'zerif_sanitize_input',
+//			'default' => __('What makes this single-page WordPress theme unique.','zerif-lite'),
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_ourfocus_subtitle', array(
+//			'label'    => __( 'Our focus subtitle', 'zerif-lite' ),
+//			'section'  => 'zerif_ourfocus_section',
+//			'priority'    => 3,
+//		));
+//
+//	else:
+//
+//		$wp_customize->add_section( 'zerif_ourfocus_section' , array(
+//			'title'       => __( 'Our focus section', 'zerif-lite' ),
+//			'priority'    => 32,
+//			'description' => __( 'The main content of this section is customizable in: Dashboard -> Appearance -> Widgets -> Our focus section. There you must add the "Zerif - Our focus widget"', 'zerif-lite' )
+//		));
+//
+//		/* show/hide */
+//		$wp_customize->add_setting( 'zerif_ourfocus_show', array(
+//			'sanitize_callback' => 'zerif_sanitize_checkbox',
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_ourfocus_show', array(
+//			'type' => 'checkbox',
+//			'label' => __('Hide our focus section?','zerif-lite'),
+//			'section' => 'zerif_ourfocus_section',
+//			'priority'    => 1,
+//		));
+//
+//		/* our focus title */
+//		$wp_customize->add_setting( 'zerif_ourfocus_title', array(
+//			'sanitize_callback' => 'zerif_sanitize_input',
+//			'default' => __('FEATURES','zerif-lite'),
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_ourfocus_title', array(
+//			'label'    => __( 'Title', 'zerif-lite' ),
+//			'section'  => 'zerif_ourfocus_section',
+//			'priority'    => 2,
+//		));
+//
+//		/* our focus subtitle */
+//		$wp_customize->add_setting( 'zerif_ourfocus_subtitle', array(
+//			'sanitize_callback' => 'zerif_sanitize_input',
+//			'default' => __('What makes this single-page WordPress theme unique.','zerif-lite'),
+//			'transport' => 'postMessage'
+//		));
+//
+//		$wp_customize->add_control( 'zerif_ourfocus_subtitle', array(
+//			'label'    => __( 'Our focus subtitle', 'zerif-lite' ),
+//			'section'  => 'zerif_ourfocus_section',
+//			'priority'    => 3,
+//		));
+//
+//	endif;
 
 	/************************************/
 	/******* ABOUT US SECTION ***********/
 	/************************************/
 	if ( class_exists( 'WP_Customize_Panel' ) ):
 
-		$wp_customize->add_panel( 'panel_about', array(
+		$wp_customize->add_section( 'section_about', array(
 			'priority' => 34,
-			'capability' => 'edit_theme_options',
-			'title' => __( 'About us section', 'zerif-lite' )
+			'title' => 关于我们
 		));
+
+		$wp_customize->add_setting( 'qsmt_about_image', array(
+			'default' => get_template_directory_uri().'/images/default_about_image.jpg'
+		));
+		$wp_customize->add_control(
+			new WP_Customize_Image_Control(
+				$wp_customize,
+				'qsmt_about_image',
+				array(
+					'label'      => '关于我们图片',
+					'section'    => 'section_about',
+					'settings'   => 'qsmt_about_image'
+				)
+			)
+		);
 
 		$wp_customize->add_section( 'zerif_aboutus_settings_section' , array(
 			'title'       => __( 'Settings', 'zerif-lite' ),

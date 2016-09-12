@@ -60,6 +60,7 @@
             <?php if ( has_nav_menu( 'primary' ) ) : ?>
                 <?php
                     wp_nav_menu( array(
+                        'menu_id'        => 'menu-nav',
                         'theme_location' => 'primary',
                         'menu_class'     => 'nav navbar-nav navbar-right',
                     ) );
