@@ -126,4 +126,31 @@ add_filter('single_template', create_function(
 );
 
 
+function the_so37580965_wp_custom_pagination($args = '', $class = 'pagination') {
+
+    if ($GLOBALS['wp_query']->max_num_pages <= 1) return;
+
+    $args = wp_parse_args( $args, array(
+        'mid_size'           => 2,
+        'prev_next'          => false,
+        'prev_text'          => __('Older posts', 'textdomain'),
+        'next_text'          => __('Newer posts', 'textdomain'),
+        'screen_reader_text' => __('Posts navigation', 'textdomain'),
+    ));
+
+    $links     = paginate_links($args);
+    $links = str_replace('<ul class=\'page-numbers\'>', '', $links);
+    $links = str_replace('</ul>', '', $links);
+    $prev_link = get_previous_posts_link($args['prev_text']);
+    $next_link = get_next_posts_link($args['next_text']);
+    $template  = apply_filters( 'the_so37580965_navigation_markup_template', '
+<nav aria-label="Page navigation" class="text-center">
+    <ul class="pagination"><li>%3$s</li>%4$s<li>%5$s</li>    </ul>
+</nav>'
+    , $args, $class);
+
+    echo sprintf($template, $class, $args['screen_reader_text'], $prev_link, $links, $next_link);
+
+}
+
 
