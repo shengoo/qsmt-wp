@@ -23,6 +23,14 @@ nav.navbar{
     height:100%;
 }
 
+.pagination .current{
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
 
 
 
