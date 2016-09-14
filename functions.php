@@ -153,4 +153,43 @@ function the_so37580965_wp_custom_pagination($args = '', $class = 'pagination') 
 
 }
 
+function create_my_cats () {
+    create_my_cat(array(
+        'cat_name' => 'slide',
+        'category_nicename' => 'slide'
+    ));
+    create_my_cat(array(
+        'cat_name' => '关于我们',
+        'category_nicename' => 'about'
+    ));
+    create_my_cat(array(
+        'cat_name' => '加入我们',
+        'category_nicename' => 'career'
+    ));
+    create_my_cat(array(
+        'cat_name' => '方案',
+        'category_nicename' => 'solution'
+    ));
+    create_my_cat(array(
+        'cat_name' => '案例',
+        'category_nicename' => 'case'
+    ));
+    create_my_cat(array(
+        'cat_name' => '合作伙伴',
+        'category_nicename' => 'partner'
+    ));
+}
+function create_my_cat($arg = ''){
+    if (file_exists (ABSPATH.'/wp-admin/includes/taxonomy.php')) {
+        require_once (ABSPATH.'/wp-admin/includes/taxonomy.php');
+        if ( ! get_cat_ID( $arg['category_nicename'] ) ) {
+            $my_cat = array(
+                'cat_name' => $arg['cat_name'],
+                'category_nicename' => $arg['category_nicename']
+            );
+            wp_insert_category($my_cat);
+        }
 
+    }
+}
+add_action ( 'after_setup_theme', 'create_my_cats' );
